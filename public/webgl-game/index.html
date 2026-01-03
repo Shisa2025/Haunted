@@ -104,8 +104,8 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        // canvas.style.width = "960px";
+        // canvas.style.height = "600px";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";
@@ -120,6 +120,18 @@
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
                   unityInstance.SetFullscreen(1);
                 };
+
+                // Prevent ESC from exiting fullscreen
+                document.addEventListener('keydown', function(e) {
+                  if (e.keyCode === 27 && document.fullscreenElement) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Re-enter fullscreen after a short delay
+                    setTimeout(() => {
+                      unityInstance.SetFullscreen(1);
+                    }, 10);
+                  }
+                }, true);
 
               }).catch((message) => {
                 alert(message);
