@@ -2,17 +2,19 @@ import { pool } from './client';
 
 async function deleteDB() {
   try {
-    // Drop tables from HauntedDB
-    await pool.query('DROP TABLE IF EXISTS time_record');
-    console.log('Table "time_record" dropped from HauntedDB');
+    // Drop tables from haunteddb schema
+    await pool.query('DROP TABLE IF EXISTS haunteddb.time_record');
+    console.log('Table "time_record" dropped from schema "haunteddb"');
 
-    await pool.query('DROP TABLE IF EXISTS feedback');
-    console.log('Table "feedback" dropped from HauntedDB');
+    await pool.query('DROP TABLE IF EXISTS haunteddb.feedback');
+    console.log('Table "feedback" dropped from schema "haunteddb"');
 
-    // Note: Not dropping the database to avoid permission issues in Neon
+    // Drop schema
+    await pool.query('DROP SCHEMA IF EXISTS haunteddb CASCADE');
+    console.log('Schema "haunteddb" dropped');
 
   } catch (err) {
-    console.error('Error dropping tables:', err);
+    console.error('Error dropping schema/tables:', err);
   } finally {
     await pool.end();
   }
