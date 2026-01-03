@@ -1,9 +1,25 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function MoreInfo() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white font-sans py-16 px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white font-sans py-16 px-8 relative">
+      {/* Background decorations */}
+      <div className="absolute left-4 top-1/4 text-gray-600 text-6xl opacity-20">🎮</div>
+      <div className="absolute right-4 bottom-1/4 text-gray-600 text-6xl opacity-20">🚀</div>
+      <div className="absolute left-1/4 bottom-8 text-gray-600 text-4xl opacity-10">🌟</div>
+      <div className="absolute right-1/4 top-8 text-gray-600 text-4xl opacity-10">💫</div>
+
+      {/* Back button */}
+      <div className="absolute top-8 left-8">
+        <Link href="/">
+          <button className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors duration-300 flex items-center gap-2">
+            <span>←</span> Back
+          </button>
+        </Link>
+      </div>
+
+      <div className="max-w-4xl mx-auto pt-16">
         {/* Avatar */}
         <div className="flex justify-center mb-8">
           <Image
@@ -20,7 +36,7 @@ export default function MoreInfo() {
           <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
             About the Developer
           </h1>
-          <div className="text-lg leading-relaxed space-y-6 text-gray-300">
+          <div className="text-lg leading-relaxed space-y-6 text-gray-300 max-w-3xl mx-auto">
             <p>
               This game is developed by independent developer Shisa, whose growth and learning experiences span China, Japan, and Singapore.
             </p>
