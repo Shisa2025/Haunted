@@ -23,7 +23,7 @@ export default function Home() {
 
           {/* Start Button */}
           <button className="mt-8 px-12 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold text-lg rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out animate-bounce">
-            Start
+            开始
           </button>
 
           {/* Project Showcase */}
