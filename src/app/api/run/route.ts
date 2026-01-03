@@ -1,8 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { pool } from '@/database/client';
 
+const EXPECTED_TOKEN = 'SHEEPSHAKE_2026_ABC123_2548376679';
+
 export async function POST(request: NextRequest) {
   try {
+    const authHeader = request.headers.get('authorization');
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const token = authHeader.substring(7); // Remove 'Bearer '
+    if (token !== EXPECTED_TOKEN) {
+      return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+    }
+
     const { clearTime, build } = await request.json();
 
     const result = await pool.query(
