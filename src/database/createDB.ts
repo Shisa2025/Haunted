@@ -2,30 +2,26 @@ import { pool } from './client';
 
 async function createDB() {
   try {
-    // Create schema instead of database
-    await pool.query('CREATE SCHEMA IF NOT EXISTS haunteddb');
-    console.log('Schema "haunteddb" created');
-
-    // Create tables in the haunteddb schema
+    // Create tables in HauntedDB
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS haunteddb.time_record (
+      CREATE TABLE IF NOT EXISTS time_record (
         email VARCHAR(255) UNIQUE NOT NULL,
         nickname VARCHAR(255) UNIQUE NOT NULL,
         time TIMESTAMP NOT NULL
       );
     `);
-    console.log('Table "time_record" created in schema "haunteddb"');
+    console.log('Table "time_record" created in HauntedDB');
 
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS haunteddb.feedback (
+      CREATE TABLE IF NOT EXISTS feedback (
         email VARCHAR(255) UNIQUE NOT NULL,
         nickname VARCHAR(255) UNIQUE NOT NULL
       );
     `);
-    console.log('Table "feedback" created in schema "haunteddb"');
+    console.log('Table "feedback" created in HauntedDB');
 
   } catch (err) {
-    console.error('Error creating schema/tables:', err);
+    console.error('Error creating tables:', err);
   } finally {
     await pool.end();
   }
