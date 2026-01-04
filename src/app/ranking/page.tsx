@@ -3,17 +3,18 @@ import { pool } from '@/database/client';
 const formatTime = (seconds: number) => {
   const mins = Math.floor(seconds / 60);
   const secs = seconds % 60;
-  return `${mins}:${secs.toString().padStart(2, '0')}`;
+  return `${mins}:${secs.toFixed(2).padStart(5, '0')}`;
 };
 
 export default async function RankingPage() {
+  // time_record table does not have an id column; order by time ascending
   const { rows } = await pool.query(
-    'SELECT id, nickname, email, time FROM time_record ORDER BY time ASC, id ASC'
+    'SELECT nickname, email, time FROM time_record ORDER BY time ASC'
   );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white px-6 py-12">
-      <div className="max-w-3xl mx-auto bg-gray-800/90 p-8 rounded-2xl border border-gray-700 shadow-xl">
+      <div className="max-w-5xl mx-auto bg-gray-800/90 p-8 rounded-2xl border border-gray-700 shadow-xl">
         <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-sm text-gray-400">Leaderboard</p>
@@ -40,9 +41,9 @@ export default async function RankingPage() {
               <span>Nickname</span>
               <span className="text-right">Time</span>
             </div>
-            {rows.map((row: { id: number; nickname: string; email: string; time: number }, index: number) => (
+            {rows.map((row: { nickname: string; email: string; time: number }, index: number) => (
               <div
-                key={row.id}
+                key={row.email || `${row.nickname}-${index}`}
                 className="grid grid-cols-[60px_1fr_140px] px-4 py-3 items-center text-gray-200 hover:bg-gray-800/60 transition-colors"
               >
                 <span className="text-sm text-gray-400">{index + 1}</span>

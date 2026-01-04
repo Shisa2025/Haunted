@@ -53,15 +53,15 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Current Ranking Card */}
+              {/* Ranking Card */}
               <div className="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-all duration-300 transform hover:scale-105">
-                <Link href="/current-ranking">
+                <Link href="/ranking">
                   <div className="cursor-pointer">
                     <div className="w-full h-32 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg mb-4 flex items-center justify-center">
                       <span className="text-4xl">🏆</span>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">Current Ranking</h3>
-                    <p className="text-gray-400">Check your position on the leaderboard.</p>
+                    <h3 className="text-xl font-bold text-white mb-2">Ranking</h3>
+                    <p className="text-gray-400">Check the leaderboard by fastest time.</p>
                   </div>
                 </Link>
               </div>
