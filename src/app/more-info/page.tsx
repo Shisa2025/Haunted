@@ -41,7 +41,7 @@ export default function MoreInfo() {
               This game is developed by independent developer Shisa, whose growth and learning experiences span China, Japan, and Singapore.
             </p>
             <p>
-              Graduated with a bachelor's degree from SIM (UOW system) in Singapore, majoring in Game and Mobile Application Development.
+              Studying with a bachelor's degree from SIM (UOW system) in Singapore, majoring in Game and Mobile Application Development.
             </p>
             <p>
               My creative focus is mainly on Unity game systems, interaction design, and experience-based gameplay driven by atmosphere and rhythm. I care more about whether the structure is clear, whether the mechanics are restrained, and the feelings players have in "unsaid" moments.
