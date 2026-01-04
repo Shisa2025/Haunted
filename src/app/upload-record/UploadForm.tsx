@@ -85,7 +85,7 @@ export default function UploadForm() {
       <div className="bg-gray-800 p-8 rounded-lg max-w-md w-full">
         <h1 className="text-2xl font-bold mb-4 text-center">Upload Your Record</h1>
         <p className="mb-6 text-gray-300 text-center">
-          Enter your email and nickname to save your clear time.
+          Congratulations on clearing the game! Add your nickname and email to upload your record. We may reach out using the email you provide.
         </p>
 
         {time && (
