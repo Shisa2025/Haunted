@@ -103,20 +103,19 @@
 
 
       } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        // canvas.style.width = "960px";
-        // canvas.style.height = "600px";
+        // Desktop style: Always fullscreen
+        canvas.style.width = "100vw";
+        canvas.style.height = "100vh";
+        document.querySelector("#unity-container").style.width = "100vw";
+        document.querySelector("#unity-container").style.height = "100vh";
+        document.body.style.width = "100vw";
+        document.body.style.height = "100vh";
+        document.body.style.margin = "0";
+        document.body.style.padding = "0";
+        document.body.style.overflow = "hidden";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";
-
-      // Globally disable ESC key for browser (game needs it)
-      document.addEventListener('keydown', function(e) {
-        if (e.keyCode === 27) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-      }, true);
 
       var script = document.createElement("script");
       script.src = loaderUrl;
@@ -125,9 +124,13 @@
           document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
               }).then((unityInstance) => {
                 document.querySelector("#unity-loading-bar").style.display = "none";
-                document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
+                
+                // Disable ESC key to exit fullscreen
+                document.addEventListener('keydown', (event) => {
+                  if (event.key === 'Escape') {
+                    event.preventDefault();
+                  }
+                });
 
               }).catch((message) => {
                 alert(message);
